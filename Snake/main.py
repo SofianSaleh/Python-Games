@@ -32,6 +32,12 @@ class Snake():
             if len(self.positions) > self.length:
                 self.positions.pop()
 
+    def reset(self):
+        self.length = 1
+        self.positions = [((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2))]
+        self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
+        self.score = 0
+
 
 # Constants
 SCREEN_HEIGHT = 480
