@@ -66,6 +66,17 @@ class Food():
         self.color = (223, 163, 49)
         self.random_position()
 
+    def random_position(self):
+        self.position = (random.randint(0, GRID_WIDTH - 1) * GRIDSIZE,
+                         random.randint(0, GRID_HEIGHT - 1) * GRIDSIZE)
+
+    def draw(self, surface):
+        r = pygame.Rect((self.position[0], self.position[1]),
+                        (GRIDSIZE, GRIDSIZE))
+        pygame.draw.rect(surface, self.color, r)
+        pygame.draw.rect(surface, (93, 216, 218), r, 1)
+
+
 
 # Constants
 SCREEN_HEIGHT = 480
