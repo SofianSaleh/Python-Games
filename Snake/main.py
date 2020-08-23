@@ -117,6 +117,8 @@ pygame.init()
     snake = Snake()
     food = Food()
 
+    myfont = pygame.font.SysFont("monospace",16)
+
     
 
 main()
