@@ -105,8 +105,8 @@ DOWN = (0, 1)
 
 
 def main():
-    
-pygame.init()
+    # Initializing pygame 
+    pygame.init()
 
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
@@ -121,16 +121,22 @@ pygame.init()
 
     while (True):
         clock.tick(10)
+        # Handeling clicks
         snake.handle_keys()
+        # Using the draw function to initialize the gird
         draw_grid(surface)
         snake.move()
+        # What happens when the snake and the food intersect
         if snake.get_head_position() == food.position:
+            # Increment the length, score, and initialize new food
             snake.length += 1
             snake.score += 1
             food.random_position()
+        # draw the food and the snke
         snake.draw(surface)
         food.draw(surface)
         screen.blit(surface, (0, 0))
+        # Write text
         text = myfont.render("score {0}".format(snake.score), 1, (0, 0, 0))
         screen.blit(text, (5, 10))
         pygame.display.update()
