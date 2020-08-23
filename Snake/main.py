@@ -31,7 +31,7 @@ class Snake():
         x, y = self.direction
         # New Position
         new_position = (((current_position[0]+(x*GRIDSIZE)) % SCREEN_WIDTH),
-               (current_position[1]+(y*GRIDSIZE)) % SCREEN_HEIGHT)
+                        (current_position[1]+(y*GRIDSIZE)) % SCREEN_HEIGHT)
         # Reset the game if the snake intersect
         if len(self.positions) > 2 and new_position in self.positions[2:]:
             self.reset()
@@ -47,15 +47,15 @@ class Snake():
         self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
         self.score = 0
 
-     def draw(self,surface):
+    def draw(self, surface):
         # Draw the snake Snake
 
         for p in self.positions:
-            r = pygame.Rect((p[0], p[1]), (GRIDSIZE,GRIDSIZE))
+            r = pygame.Rect((p[0], p[1]), (GRIDSIZE, GRIDSIZE))
             pygame.draw.rect(surface, self.color, r)
-            pygame.draw.rect(surface, (93,216, 228), r, 1)
+            pygame.draw.rect(surface, (93, 216, 228), r, 1)
 
-      def handle_keys(self):
+    def handle_keys(self):
         # Handels the keys when pressed
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -73,7 +73,7 @@ class Snake():
 
 
 class Food():
-        # Initialize the Food
+    # Initialize the Food
     def __init__(self):
         self.position = (0, 0)
         self.color = (223, 163, 49)
@@ -90,7 +90,8 @@ class Food():
         pygame.draw.rect(surface, self.color, r)
         pygame.draw.rect(surface, (93, 216, 218), r, 1)
 
-    def draw_grid(surface):
+
+def draw_grid(surface):
     for y in range(0, int(GRID_HEIGHT)):
         for x in range(0, int(GRID_WIDTH)):
             if (x + y) % 2 == 0:
@@ -101,7 +102,6 @@ class Food():
                 rr = pygame.Rect((x * GRIDSIZE, y * GRIDSIZE),
                                  (GRIDSIZE, GRIDSIZE))
                 pygame.draw.rect(surface, (84, 194, 205), rr)
-
 
 
 # Constants
@@ -119,7 +119,7 @@ DOWN = (0, 1)
 
 
 def main():
-    # Initializing pygame 
+    # Initializing pygame
     pygame.init()
 
     clock = pygame.time.Clock()
@@ -131,7 +131,7 @@ def main():
     snake = Snake()
     food = Food()
 
-    myfont = pygame.font.SysFont("monospace",16)
+    myfont = pygame.font.SysFont("monospace", 16)
 
     while (True):
         clock.tick(10)
@@ -154,5 +154,6 @@ def main():
         text = myfont.render("score {0}".format(snake.score), 1, (0, 0, 0))
         screen.blit(text, (5, 10))
         pygame.display.update()
+
 
 main()
