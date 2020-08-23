@@ -106,6 +106,17 @@ DOWN = (0, 1)
 
 def main():
     
+pygame.init()
 
+    clock = pygame.time.Clock()
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
+
+    surface = pygame.Surface(screen.get_size())
+    surface = surface.convert()
+
+    snake = Snake()
+    food = Food()
+
+    
 
 main()
