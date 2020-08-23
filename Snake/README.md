@@ -16,4 +16,4 @@ then just run the file
 
 ## Live demo
 
-[a link](https://repl.it/@SofianSaleh/Snake-game#main.py)
+[Live Demo](https://repl.it/@SofianSaleh/Snake-game#main.py)
