@@ -119,6 +119,11 @@ pygame.init()
 
     myfont = pygame.font.SysFont("monospace",16)
 
-    
+    while (True):
+        clock.tick(10)
+        snake.handle_keys()
+        draw_grid(surface)
+        snake.move()
+       
 
 main()
