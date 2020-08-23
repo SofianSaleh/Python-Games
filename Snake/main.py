@@ -5,46 +5,58 @@ import random
 
 class Snake():
     def __init__(self):
+        # Initialize the Snake
         self.length = 1
         self.positions = [((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2))]
         self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
         self.color = (17, 24, 47)
         self.score = 0
+    # Get the snake position
 
     def get_head_position(self):
         return self.positions[0]
 
+    # Make the snake turn
     def turn(self, point):
         if self.length > 1 and (point[0]*-1, point[1]*-1) == self.direction:
             return
         else:
             self.direction = point
 
+    # Make the snake Move
     def move(self):
-        cur = self.get_head_position()
+        # Current position
+        current_position = self.get_head_position()
+        # What direction are you going
         x, y = self.direction
-        new = (((cur[0]+(x*GRIDSIZE)) % SCREEN_WIDTH),
-               (cur[1]+(y*GRIDSIZE)) % SCREEN_HEIGHT)
-        if len(self.positions) > 2 and new in self.positions[2:]:
+        # New Position
+        new_position = (((current_position[0]+(x*GRIDSIZE)) % SCREEN_WIDTH),
+               (current_position[1]+(y*GRIDSIZE)) % SCREEN_HEIGHT)
+        # Reset the game if the snake intersect
+        if len(self.positions) > 2 and new_position in self.positions[2:]:
             self.reset()
         else:
-            self.positions.insert(0, new)
+            self.positions.insert(0, new_position)
             if len(self.positions) > self.length:
                 self.positions.pop()
 
     def reset(self):
+        # Reset the Snake
         self.length = 1
         self.positions = [((SCREEN_WIDTH/2), (SCREEN_HEIGHT/2))]
         self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
         self.score = 0
 
      def draw(self,surface):
+        # Draw the snake Snake
+
         for p in self.positions:
             r = pygame.Rect((p[0], p[1]), (GRIDSIZE,GRIDSIZE))
             pygame.draw.rect(surface, self.color, r)
             pygame.draw.rect(surface, (93,216, 228), r, 1)
 
       def handle_keys(self):
+        # Handels the keys when pressed
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -61,11 +73,13 @@ class Snake():
 
 
 class Food():
+        # Initialize the Food
     def __init__(self):
         self.position = (0, 0)
         self.color = (223, 163, 49)
         self.random_position()
 
+        # Making the food appear in random positions
     def random_position(self):
         self.position = (random.randint(0, GRID_WIDTH - 1) * GRIDSIZE,
                          random.randint(0, GRID_HEIGHT - 1) * GRIDSIZE)
