@@ -38,6 +38,12 @@ class Snake():
         self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
         self.score = 0
 
+     def draw(self,surface):
+        for p in self.positions:
+            r = pygame.Rect((p[0], p[1]), (GRIDSIZE,GRIDSIZE))
+            pygame.draw.rect(surface, self.color, r)
+            pygame.draw.rect(surface, (93,216, 228), r, 1)
+
 
 # Constants
 SCREEN_HEIGHT = 480
