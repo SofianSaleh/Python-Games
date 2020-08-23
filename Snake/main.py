@@ -60,6 +60,13 @@ class Snake():
                     self.turn(RIGHT)
 
 
+class Food():
+    def __init__(self):
+        self.position = (0, 0)
+        self.color = (223, 163, 49)
+        self.random_position()
+
+
 # Constants
 SCREEN_HEIGHT = 480
 SCREEN_WIDTH = 480
