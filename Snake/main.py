@@ -124,6 +124,9 @@ pygame.init()
         snake.handle_keys()
         draw_grid(surface)
         snake.move()
-       
-
+        if snake.get_head_position() == food.position:
+            snake.length += 1
+            snake.score += 1
+            food.random_position()
+        
 main()
