@@ -105,8 +105,8 @@ def draw_grid(surface):
 
 
 # Constants
-SCREEN_HEIGHT = 480
-SCREEN_WIDTH = 480
+SCREEN_HEIGHT = 480 * 2
+SCREEN_WIDTH = 480 * 2
 
 GRIDSIZE = 20
 GRID_HEIGHT = SCREEN_WIDTH / GRIDSIZE
@@ -134,7 +134,7 @@ def main():
     myfont = pygame.font.SysFont("monospace", 16)
 
     while (True):
-        clock.tick(10)
+        clock.tick(20)
         # Handeling clicks
         snake.handle_keys()
         # Using the draw function to initialize the gird
